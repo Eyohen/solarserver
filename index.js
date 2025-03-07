@@ -35,6 +35,12 @@ app.use(helmet());
 app.use(express.json());
 
 
+// Basic health check endpoint - public access
+app.get('/api/health', (req, res) => {
+    res.status(200).json({ status: 'OK', message: 'Quick email service is running' });
+  });
+  
+
 
 db.sequelize
     .authenticate()
