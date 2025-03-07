@@ -56,7 +56,7 @@ const { User } = db;
       const accessToken = jwt.sign(
         { user: userPayload },
       
-       process.env.JWT_SECRET || 'simisola', // Use a secure secret key, preferably from environment variables
+       process.env.JWT_SECRET, // Use a secure secret key, preferably from environment variables
         { expiresIn: '14d' } // Token expiration time
       );
 
@@ -64,7 +64,7 @@ const { User } = db;
       const refreshToken = jwt.sign(
         { user: userPayload },
        
-       process.env.JWT_REFRESH_SECRET ||  'simisola2', // Use a secure refresh secret key
+       process.env.JWT_REFRESH_SECRET, // Use a secure refresh secret key
         { expiresIn: '14d' } // Refresh token expiration time
       );
 
@@ -109,7 +109,7 @@ const { User } = db;
       const accessToken = jwt.sign(
         {user: userPayload},
         // { userId: user.id, email: user.email },
-        process.env.JWT_SECRET || 'simisola', // Use a secure secret key, preferably from environment variables
+        process.env.JWT_SECRET, // Use a secure secret key, preferably from environment variables
         { expiresIn: '14d' } // Token expiration time
       );
 
@@ -117,7 +117,7 @@ const { User } = db;
       const refreshToken = jwt.sign(
         { user: userPayload },
      
-       process.env.JWT_REFRESH_SECRET || 'simisola2', // Use a secure refresh secret key
+       process.env.JWT_REFRESH_SECRET, // Use a secure refresh secret key
         { expiresIn: '14d' } // Refresh token expiration time
       );
 
@@ -138,7 +138,7 @@ const { User } = db;
     }
 
     try {
-      const decoded = jwt.verify(token, process.env.JWT_SECRET || 'simisola');
+      const decoded = jwt.verify(token, process.env.JWT_SECRET);
       res.status(200).json({ ...decoded, access_token: token });
     } catch (err) {
       res.status(401).json({ error: "Unauthorized - Invalid token" });
