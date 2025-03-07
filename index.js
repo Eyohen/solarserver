@@ -24,16 +24,14 @@ const port = process.env.API_PORT;
 
 
 app.use(cors({
-    origin: ['http://localhost:5173', 'https://solarpaddy-five.vercel.app'],
-    //origin: '*',  // Allow all origins
+    //origin: ['http://localhost:5173', 'https://solarpaddy-five.vercel.app'],
+    origin: '*',  // Allow all origins
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin', 'x-reset-token'],
     credentials: false  // Set to false when using origin: '*'
   }));
 app.use(morgan('dev'))
-app.use(helmet({
-    crossOriginResourcePolicy: { policy: 'cross-origin' }
-  }));
+app.use(helmet());
 app.use(express.json());
 
 
