@@ -14,8 +14,6 @@ const calculator =  require('./route/calculator');
 const estimate =  require('./route/estimate');
 
 
-
-
 const morgan = require('morgan');
 const helmet = require('helmet');
 const cors = require('cors');
@@ -25,15 +23,19 @@ const app = express();
 const port = process.env.API_PORT;
 
 
-app.use(morgan('dev'))
-app.use(helmet());
-app.use(express.json());
 app.use(cors({
     origin: '*',  // Allow all origins
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin', 'x-reset-token'],
     credentials: false  // Set to false when using origin: '*'
   }));
+app.use(morgan('dev'))
+app.use(helmet({
+    crossOriginResourcePolicy: { policy: 'cross-origin' }
+  }));
+app.use(express.json());
+
+
 
 db.sequelize
     .authenticate()
