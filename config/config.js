@@ -30,7 +30,11 @@ module.exports = {
     // "database": process.env.DB_NAME,
     // "host": process.env.DB_HOST,
     // "port": process.env.DB_PORT,
-    "use_env_variable": "DATABASE_URL",
+    "username": "postgres",
+    "password": "maBaplyGrJYOOQdVCZjtTIsowMgWLrRe",
+    "database": "railway",
+    "host": "centerbeam.proxy.rlwy.net",
+    "port": 30376,
     "dialect": "postgres",
     "dialectOptions": {
       "ssl": {
